@@ -1,0 +1,43 @@
+﻿@model IEnumerable<TestProjectIsDB.Models.Classes.AccountType>
+
+@{
+    ViewData["Title"] = "Account List";
+
+}
+
+<h1 style="font-family:Algerian; text-align:center; color:cornflowerblue;">Account List</h1>
+
+<p>
+    <a asp-action="AddAccount" style="font-family:Arial;">Create New</a>
+</p>
+<table class="table" style="background-color:lavenderblush">
+    <thead>
+        <tr>
+            <th>
+                AccountType Id @*@Html.DisplayNameFor(model => model.AccountTypeId)*@
+            </th>
+            <th>
+                Account Name
+                @*@Html.DisplayNameFor(model => model.Account Name)*@
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountTypeId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditAccount", new { id = item.AccountTypeId }, htmlAttributes: new { @class = "btn btn-primary", @role = "button" }) |
+                    @Html.ActionLink("Delete", "DeleteAccount", new { id = item.AccountTypeId }, htmlAttributes: new { @class = "btn btn-danger", @role = "button" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
